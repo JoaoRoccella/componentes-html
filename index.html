@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // Como fetch é assíncrono, ele não garante que os elementos sejam carregados
+        // na página na ordem em que os arquivos são chamados.
+
+        // fetch('header.html').then(resposta => resposta.text()).then(codigo => {
+        //     document.querySelector('body').innerHTML += codigo;
+        // });
+        // fetch('main.html').then(resposta => resposta.text()).then(codigo => {
+        //     document.querySelector('body').innerHTML += codigo;
+        // });
+        // fetch('footer.html').then(resposta => resposta.text()).then(codigo => {
+        //     document.querySelector('body').innerHTML += codigo;
+        // });
+
+        fetch('header.html')
+            .then(resposta => resposta.text())
+            .then(codigo => {
+                document.querySelector('body').insertAdjacentHTML('beforeend', codigo);
+                return fetch('main.html');
+            })
+            .then(resposta => resposta.text())
+            .then(codigo => {
+                document.querySelector('body').insertAdjacentHTML('beforeend', codigo);
+                return fetch('footer.html');
+            })
+            .then(resposta => resposta.text())
+            .then(codigo => {
+                document.querySelector('body').insertAdjacentHTML('beforeend', codigo);
+            })
+            .catch(erro => console.error('Erro ao carregar o conteúdo:', erro));
+    </script>
+</body>
+</html>
