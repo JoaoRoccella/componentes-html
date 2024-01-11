@@ -4,7 +4,7 @@ Compondo uma página HTML com JavaScript a partir de vários arquivos HTML e tre
 
 ## Usando Fetch API
 
-Como fetch é assíncrono, ele não garante que os elementos sejam carregados na página na ordem em que os arquivos são chamados. Por isso o fetch deve ser encadeado como no exemplo abaixo.
+Como fetch é assíncrono, ele não garante que os elementos sejam carregados na página na ordem em que os arquivos são chamados. Por isso o fetch deve ser encadeado como no exemplo abaixo:
 
 ```js
 fetch('header.html')
